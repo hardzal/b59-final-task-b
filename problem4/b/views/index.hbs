@@ -1,0 +1,81 @@
+{{#> layout title=title userSession=userSession}}
+        <div class="row mb-3 mt-3">
+          <div class="col col-md-4">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Pilihan Data
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/?data=provinsi" class="dropdown-item" type="button">Provinsi</a>
+                </li>
+                <li>
+                  <a href="/?data=kabupaten" class="dropdown-item" type="button">Kabupaten</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col col-md-8">
+            <ul class="nav justify-content-end">
+              <li class="nav-item me-3">
+                <a
+                  class="btn btn-outline-primary"
+                  aria-current="page"
+                  href="/provinsi/add"
+                >Tambah Provinsi
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-outline-primary" href="/kabupaten/add">Tambah Kabupaten</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {{#if messages.error}}
+          <div class="alert alert-error" role="alert">
+              {{messages.error}}
+          </div>
+        {{/if}}
+        {{#if messages.success}}
+          <div class="alert alert-success" role="alert">
+              {{messages.success}}
+          </div>
+        {{/if}}
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+        {{#each data}}
+          <div class="col">
+            <div class="card card-fixed">
+              <img
+                src="assets/images/{{this.photo}}"
+                class="card-img-top img-fluid"
+                alt="{{this.nama}}"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">{{this.nama}}</h5>
+                <p class="card-text">{{this.diresmikan}}</p>
+                <div class="row">
+                    {{#if userSession}}
+                    <div class="col col-xs-4"><a class="btn btn-secondary" href="/{{../type}}/{{this.id}}/edit" role="button">Edit</a></div>
+                    {{/if}}
+                    <div class="col col-xs-4"><a class="btn btn-primary" href="/{{../type}}/{{this.id}}" role="button">Detail</a></div>
+                    {{#if userSession}}
+                    <div class="col col-xs-4">
+                        <form method="POST" action="/{{../type}}/{{this.id}}?_method=DELETE">
+                            <input type="hidden" name="image" value="{{this.image}}"/>
+                            <input type="hidden" name="id" value="{{this.id}}"/>
+                            <button class="btn btn-danger" type="submit" role="button" onclick="return confirm('Apakah kamu yakin ingin menghapusnya?')">Delete</button>
+                        </form>
+                    </div>
+                    {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+{{/layout}}

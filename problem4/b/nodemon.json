@@ -1,0 +1,6 @@
+{
+  "match": ["index.js", "views/"],
+  "ext": "js, css, hbs",
+  "ignore": ["node_modules"],
+  "exec": "node index.js"
+}

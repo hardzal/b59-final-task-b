@@ -4,4 +4,4 @@
 - [x] Mengurutkan angka dengan Bubble sort
 - [x] Pattern
 - [x] Database
-- [ ] Menampilkan data
+- [x] CRUD & Auth

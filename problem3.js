@@ -21,7 +21,8 @@ function polaPersegi(n) {
   }
 }
 
-polaPersegi(5);
-console.log("");
+// polaPersegi(5);
+// console.log("");
 polaPersegi(7);
 console.log("");
+// console.log(polaPersegi(8));

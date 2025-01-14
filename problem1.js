@@ -30,7 +30,4 @@ function checkTotalHarga(tipe_barang, quantity) {
   return result;
 }
 
-console.log(checkTotalHarga("A", 14));
-console.log(checkTotalHarga("A", 13));
-console.log(checkTotalHarga("b", 8));
-console.log(checkTotalHarga("C", 3));
+console.log(checkTotalHarga("a", 10));

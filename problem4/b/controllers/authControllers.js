@@ -20,6 +20,7 @@ async function homePage(req, res) {
     const dataResult = await sequelize.query(query, {
       type: QueryTypes.SELECT,
     });
+    console.log(userSession);
 
     return res.render("index", {
       title: "Homepage",

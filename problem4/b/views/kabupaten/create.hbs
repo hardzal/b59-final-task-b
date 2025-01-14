@@ -1,0 +1,42 @@
+{{#> layout title=title userSession=userSession}}
+        <div class="row">
+          <h3>Tambah data Kabupaten</h3>
+          <hr />
+        </div>
+        <div class="row">
+          <form method="POST" action="/kabupaten" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama Provinsi</label>
+              <select name="provinsi_id" class="form-control">
+                {{#each provinsiList}}
+                    <option value="{{this.id}}">{{this.nama}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama Kabupaten</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nama"
+                name="nama"
+                placeholder="Masukkan nama provinsi"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="diresmikan" class="form-label">Diresmikan</label>
+              <input type="date" class="form-control" id="diresmikan" name="diresmikan"/>
+            </div>
+            <div class="mb-3">
+              <label for="photo" class="form-label">Upload Photo</label>
+              <input class="form-control" type="file" id="image" name="image" required/>
+              <div>
+                <img id="preview" src="#" alt="image preview" class="img-thumbnail d-none" style="max-height: 300px;">
+              </div>
+            </div>
+            <input type="hidden" name="user_id" value="1"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+    <script src="/assets/js/image-preview.js" type="text/javascript"></script>
+{{/layout}}

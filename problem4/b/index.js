@@ -66,6 +66,10 @@ hbs.registerPartials(path.join(__dirname, "./views/partials"), (err) => {
   if (err) console.error("Error registering partials:", err);
 });
 
+hbs.registerHelper("ifEquals", function (arg1, arg2, options) {
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
+
 app.get("/", homePage);
 app.get("/login", loginPage);
 app.get("/register", registerPage);
@@ -83,9 +87,9 @@ app.put("/provinsi/:id/edit", upload.single("image"), provinsiEdit);
 app.delete("/provinsi/:id", provinsiDelete);
 
 app.get("/kabupaten", kabupatenPage);
-app.get("/kabupaten/:id", kabupatenDetailPage);
 app.get("/kabupaten/add", kabupatenAddPage);
-app.post("/addkabupaten", upload.single("image"), kabupatenAdd);
+app.post("/kabupaten", upload.single("image"), kabupatenAdd);
+app.get("/kabupaten/:id", kabupatenDetailPage);
 app.get("/kabupaten/:id/edit", kabupatenEditPage);
 app.put("/kabupaten/:id", upload.single("image"), kabupatenEdit);
 app.delete("/kabupaten/:id", kabupatenDelete);

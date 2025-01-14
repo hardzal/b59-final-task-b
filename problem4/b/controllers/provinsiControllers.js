@@ -191,11 +191,11 @@ async function provinsiDelete(req, res) {
     });
 
     if (!provinsi) {
-      req.flash("error", `Gagal menghapus data! ${project}`);
+      req.flash("error", `Gagal menghapus data! ${provinsi}`);
       return res.redirect("/");
     }
 
-    req.flash("success", `Berhasil menghapus data! ${project}`);
+    req.flash("success", `Berhasil menghapus data! ${provinsi}`);
     return res.redirect("/");
   } catch (error) {
     console.error(error);

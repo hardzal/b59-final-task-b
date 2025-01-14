@@ -30,6 +30,12 @@
           <li class="nav-item">
             <span>Hi, {{userSession.username}}</span>
           </li>
+          <li class="nav-item">
+            <form name="logoutform" method="post" action="/logout" id="logoutform">
+              <input type="hidden" name="user_id" value="{{userSession.id}}">
+              <button class="btn btn-danger" type="button" name="logout" id="logout"/>Logout</button>
+          </form>
+          </li>
         {{else}}
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/login">Login</a>

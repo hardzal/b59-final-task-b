@@ -1,0 +1,47 @@
+{{#> layout title=title userSession=userSession}}
+        <div class="row">
+          <h3>Tambah data Kabupaten</h3>
+          <hr />
+        </div>
+        <div class="row">
+            {{#with data}}
+          <form method="POST" action="/kabupaten/{{id}}?_method=PUT" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama Provinsi</label>
+              <select name="provinsi_id" class="form-control">
+                {{#each ../provinsi}}
+                    <option value="{{this.id}}" {{#ifEquals this.id ../provinsi_id}}selected{{/ifEquals}}>{{this.nama}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama Kabupaten</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nama"
+                name="nama"
+                value="{{nama}}"
+                placeholder="Masukkan nama provinsi"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="diresmikan" class="form-label">Diresmikan</label>
+              <input type="date" class="form-control" id="diresmikan" name="diresmikan" value="{{diresmikan}}"/>
+            </div>
+            <div class="mb-3">
+              <label for="photo" class="form-label">Upload Photo</label>
+              <input class="form-control" type="file" id="image" name="image"/>
+              <input type="hidden" value="{{photo}}" name="image_old"/>
+              <div>
+                <img id="preview" src="/assets/images/{{photo}}" alt="image preview" class="img-thumbnail" style="max-height: 300px;">
+              </div>
+            </div>
+            <input type="hidden" name="id" value="{{id}}"/>
+            <input type="hidden" name="user_id" value="{{userSession.id}}"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          {{/with}}
+        </div>
+    <script src="/assets/js/image-preview.js" type="text/javascript"></script>
+{{/layout}}

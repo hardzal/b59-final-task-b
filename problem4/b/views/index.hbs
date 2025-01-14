@@ -59,14 +59,14 @@
                 <h5 class="card-title">{{this.nama}}</h5>
                 <p class="card-text">{{this.diresmikan}}</p>
                 <div class="row">
-                    {{#if userSession}}
+                    {{#if ../userSession}}
                     <div class="col col-xs-4"><a class="btn btn-secondary" href="/{{../type}}/{{this.id}}/edit" role="button">Edit</a></div>
                     {{/if}}
                     <div class="col col-xs-4"><a class="btn btn-primary" href="/{{../type}}/{{this.id}}" role="button">Detail</a></div>
-                    {{#if userSession}}
+                    {{#if ../userSession}}
                     <div class="col col-xs-4">
                         <form method="POST" action="/{{../type}}/{{this.id}}?_method=DELETE">
-                            <input type="hidden" name="image" value="{{this.image}}"/>
+                            <input type="hidden" name="image" value="{{this.photo}}"/>
                             <input type="hidden" name="id" value="{{this.id}}"/>
                             <button class="btn btn-danger" type="submit" role="button" onclick="return confirm('Apakah kamu yakin ingin menghapusnya?')">Delete</button>
                         </form>
